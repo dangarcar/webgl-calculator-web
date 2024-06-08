@@ -1,0 +1,27 @@
+{
+  "name": "webgl-calculator-web",
+  "private": true,
+  "version": "0.0.0",
+  "homepage": "https://dangarcar.github.io/webgl-calculator-web/",
+  "type": "module",
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/numeral": "^2.0.5",
+    "gh-pages": "^6.1.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0"
+  },
+  "dependencies": {
+    "@unified-latex/unified-latex-util-argspec": "^1.7.1",
+    "@unified-latex/unified-latex-util-parse": "^1.7.1",
+    "colortranslator": "^4.1.0",
+    "numeral": "^2.0.6",
+    "unified-latex": "^1.1.3"
+  }
+}

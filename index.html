@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="/src/lib/mathquill/build/mathquill.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="module" src="/src/lib/mathquill/build/mathquill.min.js"></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebGL Calculator</title>
+
+    <link rel="stylesheet" href="/src/style.css" />
+    <script type="module" src="/src/main.ts" defer></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div id="app">
+            <div id="calc-div">
+                <canvas id="calculator-back" width="768" height="768">
+                    Unexpected error, the graph could not be rendered.
+                </canvas>
+                <canvas id="calculator" width="768" height="768">
+                    Unexpected error, the graph could not be rendered.
+                </canvas>
+                <span id="fps"></span>
+            </div>
+        </div>
+    
+        <div id="sidebar-container">
+            <div class="horizontal-container">
+                <h1 id="title">WebGL calculator</h1>
+    
+                <div id="button-bar">
+                    <button id="home" class="fa-button">
+                        <span><i class="fa-solid fa-house"></i></span>
+                    </button>
+                    <button id="more" class="fa-button">
+                        <span><i class="fa-solid fa-circle-plus"></i></span>
+                    </button>
+                </div>
+            </div>
+            <div id="sidebar-scroll">
+                <div id="over-gradient"></div>
+                <div id="sidebar"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
