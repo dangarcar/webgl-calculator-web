@@ -23,12 +23,18 @@ function startRendering() {
     let oldTime = performance.now();
     let frames = 0;
     (function render() {
-        if(updateCanvas) {
-            console.time("update");
-            updateDraw();
-            console.timeEnd("update");
+        drawBack();
 
-            updateCanvas = false;
+        if(updateCanvas) {
+            try {
+                console.time("update");
+                updateDraw();
+                console.timeEnd("update");
+            } catch(e) {
+                console.error(e);
+            } finally {
+                updateCanvas = false;
+            }
         }
 
         window.requestAnimationFrame(render);
@@ -70,8 +76,6 @@ function startRendering() {
             gl.uniform4fv(expressionsLocation, express.flat(1));
 
         gl.drawArrays(gl.TRIANGLES, 0, 6);
-
-        drawBack();
     })();
 
     function updateDraw() {

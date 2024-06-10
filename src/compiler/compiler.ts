@@ -124,13 +124,15 @@ function handleDenominators(code: string, denominators: string[], exprIdx: numbe
     if(denominators.length > 32) 
         throw Error("A function can't have more than 32 denominators");
 
-
-    const dens = denominators.length > 0? denominators.reduce((prev, curr, i, _arr) => 
-        prev + `
-        float var_${exprIdx}_${i} = ${curr};
+    let dens = '';
+    for(let i in denominators) {
+        dens += `
+        float var_${exprIdx}_${i} = ${denominators[i]};
         ret.y <<= 1;
         ret.y |= int(fneg(var_${exprIdx}_${i}));`
-    ) : "";
+    }
+
+    console.log(dens)
 
     return `${dens}
         ret.x = int(fneg(${code}));`;

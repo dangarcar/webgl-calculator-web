@@ -78,7 +78,12 @@ function buildFactor(tokens: Parser.Node[], index: number): [Ast.Node, number] {
         }
 
         const op = Ast.OP_NAME_TABLE.get(token.content)!;
-        if(op < Ast.startUnary) { //Binary
+        if(op === Ast.BinaryOps.Division) {
+            const left = buildTree(token.args![0].content);
+            const right = buildTree(token.args![1].content);
+
+            node = Ast.createBinary(Ast.BinaryOps.Division, left, right);
+        } else if(op < Ast.startUnary) { //Binary
             const [lhs, l] = buildFactor(tokens, index);
             index = l;
             const [rhs, r] = buildFactor(tokens, index);
@@ -120,7 +125,6 @@ function buildFactor(tokens: Parser.Node[], index: number): [Ast.Node, number] {
             for(let i=0; i<derivateLevel; ++i) {
                 const [node, _tmp] = simplifyTree(deriveFunction(f));
                 f = node;
-                Ast.printTree(f); //FIXME:
             }
 
             console.log(`function ${token.content}`);
